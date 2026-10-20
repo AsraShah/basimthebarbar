@@ -68,7 +68,7 @@ h1 em,h2 em{font-style:normal;color:var(--gold)}
 
 /* NAV — floats over the hero, turns solid black once you scroll */
 .nav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;gap:30px;padding:24px 60px;color:#fff;transition:background .4s,padding .4s,border-color .4s;border-bottom:1px solid transparent}
-.nav.solid{background:rgba(14,14,13,.93);backdrop-filter:blur(16px);padding:13px 60px;border-bottom-color:rgba(187,153,94,.25)}
+.nav.solid{background:rgba(14,14,13,.97);padding:13px 60px;border-bottom-color:rgba(187,153,94,.25)}
 .logo{display:flex;align-items:center;gap:12px}
 .logo-mark{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 1px rgba(187,153,94,.6);transition:box-shadow .3s,transform .4s}
 .logo:hover .logo-mark{box-shadow:0 0 0 2px var(--gold);transform:rotate(-8deg)}
@@ -124,7 +124,7 @@ h1 em,h2 em{font-style:normal;color:var(--gold)}
 .hero-proof q{font-family:var(--serif);font-style:italic;font-size:16px;color:#fff}
 .hero-proof small{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:6px}
 .stars{color:var(--gold);letter-spacing:3px;white-space:nowrap}
-.hero-badge{position:absolute;z-index:2;right:60px;bottom:80px;width:200px;padding:22px 22px 20px;background:rgba(14,14,13,.55);backdrop-filter:blur(10px);border:1px solid rgba(187,153,94,.45)}
+.hero-badge{position:absolute;z-index:2;right:60px;bottom:80px;width:200px;padding:22px 22px 20px;background:rgba(14,14,13,.78);border:1px solid rgba(187,153,94,.45)}
 .hero-badge span{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 .hero-badge strong{display:block;font:400 24px/1.15 var(--serif);margin:8px 0 14px}
 .hero-badge svg{width:26px;height:26px;color:var(--gold)}
@@ -177,7 +177,7 @@ h1 em,h2 em{font-style:normal;color:var(--gold)}
 .ba::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,14,13,.35) 0,transparent 22%,transparent 75%,rgba(14,14,13,.6) 100%);pointer-events:none}
 .ba-after{clip-path:inset(0 0 0 50%)}
 .ba-line{position:absolute;top:0;bottom:0;left:50%;width:2px;margin-left:-1px;background:var(--gold);pointer-events:none;z-index:2;box-shadow:0 0 12px rgba(0,0,0,.5)}
-.ba-knob{position:absolute;top:50%;left:50%;width:54px;height:54px;border-radius:50%;background:rgba(14,14,13,.7);backdrop-filter:blur(6px);border:2px solid var(--gold);color:var(--gold-soft);display:grid;place-items:center;transform:translate(-50%,-50%);pointer-events:none;z-index:3;transition:transform .2s,background .2s,color .2s}
+.ba-knob{position:absolute;top:50%;left:50%;width:54px;height:54px;border-radius:50%;background:rgba(14,14,13,.8);border:2px solid var(--gold);color:var(--gold-soft);display:grid;place-items:center;transform:translate(-50%,-50%);pointer-events:none;z-index:3;transition:transform .2s,background .2s,color .2s}
 .ba-knob svg{width:24px;height:24px}
 .ba-knob::after{content:'';position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(217,189,133,.6);animation:baPulse 2.2s ease-out infinite}
 .ba.touched .ba-knob::after{animation:none;opacity:0}
@@ -340,14 +340,16 @@ body.modal-open{overflow:hidden}
 .loader img{height:70px;width:auto;animation:pulse 1.6s ease-in-out infinite}
 .loader div{font:400 15px var(--display);letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 @keyframes pulse{0%,100%{opacity:.35;transform:scale(.97)}50%{opacity:1;transform:none}}
-.progress-bar{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold-deep),var(--gold-soft));z-index:1003}
+.progress-bar{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--gold-deep),var(--gold-soft));z-index:1003}
 @media(hover:hover) and (pointer:fine){
   body{cursor:none}
   button,a,summary,.ba-range{cursor:none}
 }
-.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%);mix-blend-mode:difference}
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;margin:-3.5px 0 0 -3.5px;mix-blend-mode:difference;will-change:transform}
+.cursor-ring{margin:-17px 0 0 -17px}
+.cursor-ring.grow{margin:-30px 0 0 -30px}
 .cursor-dot{width:7px;height:7px;background:#fff;z-index:9999}
-.cursor-ring{width:34px;height:34px;border:1px solid rgba(255,255,255,.55);z-index:9998;transition:width .3s,height .3s,background .3s}
+.cursor-ring{width:34px;height:34px;border:1px solid rgba(255,255,255,.55);z-index:9998;transition:width .3s,height .3s,margin .3s,background .3s}
 .cursor-ring.grow{width:60px;height:60px;background:rgba(255,255,255,.08)}
 @media(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
 .float-book{position:fixed;bottom:26px;right:26px;width:58px;height:58px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;z-index:900;box-shadow:0 12px 26px -10px rgba(0,0,0,.45);transition:opacity .3s,transform .3s;opacity:0;transform:scale(.6);pointer-events:none}
@@ -791,6 +793,8 @@ const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
   }
   pick();
   mq.addEventListener('change',pick);
+  // No point decoding video nobody can see
+  new IntersectionObserver(([e])=>{e.isIntersecting?v.play().catch(()=>{}):v.pause();}).observe(v);
 })();
 
 // Loader
@@ -798,29 +802,40 @@ const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
   const loader=$('#loader');
   let hidden=false;
   const hide=()=>{if(!hidden){hidden=true;loader.classList.add('hidden');}};
-  if(document.readyState!=='loading') setTimeout(hide,500);
-  else document.addEventListener('DOMContentLoaded',()=>setTimeout(hide,700));
-  setTimeout(hide,3000);
+  if(document.readyState!=='loading') hide();
+  else document.addEventListener('DOMContentLoaded',hide);
+  setTimeout(hide,1500);
 })();
 
 // Scroll: progress bar, solid nav, floating book button
 const nav=$('#nav'),progressBar=$('#progress-bar'),floatBook=$('#float-book');
+let scrollQueued=false;
 function onScroll(){
+  scrollQueued=false;
   const h=document.documentElement;
-  progressBar.style.width=h.scrollTop/(h.scrollHeight-h.clientHeight)*100+'%';
+  progressBar.style.transform=`scaleX(${h.scrollTop/(h.scrollHeight-h.clientHeight)})`;
   nav.classList.toggle('solid',scrollY>60);
   floatBook.classList.toggle('show',scrollY>innerHeight*.8);
 }
-addEventListener('scroll',onScroll,{passive:true});
+addEventListener('scroll',()=>{if(!scrollQueued){scrollQueued=true;requestAnimationFrame(onScroll);}},{passive:true});
 onScroll();
 
 // Custom cursor (mouse only)
 (function(){
   if(!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
   const dot=$('#cursor-dot'),ring=$('#cursor-ring');
-  let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
-  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
-  (function loop(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+  let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my,running=false;
+  function loop(){
+    rx+=(mx-rx)*.18;ry+=(my-ry)*.18;
+    ring.style.transform=`translate3d(${rx}px,${ry}px,0)`;
+    running=Math.abs(mx-rx)+Math.abs(my-ry)>.5;
+    if(running) requestAnimationFrame(loop);
+  }
+  addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    dot.style.transform=`translate3d(${mx}px,${my}px,0)`;
+    if(!running){running=true;requestAnimationFrame(loop);}
+  },{passive:true});
   document.addEventListener('mouseover',e=>ring.classList.toggle('grow',!!e.target.closest('a,button,summary,.ba')));
 })();
 
